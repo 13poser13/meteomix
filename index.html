@@ -2397,6 +2397,150 @@
             }
         }
 
+        /* ===== iPHONE / SMALL PHONE REFINEMENT =====
+           Target: iPhone 16 Pro portrait and similar phones (<= 430 CSS px). */
+        @media (max-width:430px) {
+            body {
+                padding-bottom: calc(76px + env(safe-area-inset-bottom));
+                background-size: 160% 160%;
+            }
+
+            .header {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                gap: .45rem .65rem;
+                padding: .65rem .75rem .7rem;
+                padding-top: calc(.55rem + env(safe-area-inset-top));
+                position: relative;
+                align-items: center;
+            }
+            .header-left { width: auto; justify-content: flex-start; min-width: 0; }
+            .logo { font-size: 1.08rem; gap: .4rem; }
+            .logo-icon { font-size: 1.2rem; }
+            .logo-badge { display: none; }
+            .header-right {
+                width: auto; justify-content: flex-end; gap: .45rem;
+                grid-column: 2; grid-row: 1;
+            }
+            .update-info { text-align: right; }
+            .update-label { display: none; }
+            .update-time { font-size: .78rem; }
+            .refresh-btn { width: 38px; height: 38px; }
+            .header-center {
+                width: 100%; min-width: 0; grid-column: 1 / -1; grid-row: 2; text-align: left;
+            }
+            .location-display { justify-content: flex-start; font-size: .9rem; min-width: 0; }
+            .location-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .coords-display { display: none; }
+            .header-search {
+                grid-column: 1 / -1; grid-row: 3; width: 100%; max-width: none; min-width: 0;
+                height: 46px; padding: .2rem;
+            }
+            .header-search input { height: 40px; }
+            .search-submit { width: 40px; height: 40px; }
+
+            .utility-strip {
+                margin: .55rem .75rem 0; padding: .5rem; gap: .5rem;
+                flex-wrap: nowrap; overflow: hidden;
+            }
+            .favorites-row { flex: 0 0 auto; max-width: 42%; }
+            .utility-actions {
+                width: auto; flex: 1 1 auto; min-width: 0; justify-content: flex-start;
+                overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none;
+                -webkit-overflow-scrolling: touch; padding-bottom: 1px;
+            }
+            .utility-actions::-webkit-scrollbar,
+            .wind-model-badges::-webkit-scrollbar,
+            .daily-cards::-webkit-scrollbar { display: none; }
+            .chip, .segmented button { min-height: 40px; display: inline-flex; align-items: center; justify-content: center; }
+            .chip { padding: .4rem .7rem; }
+
+            .hero-section, .content-section { padding-left: .75rem; padding-right: .75rem; }
+            .hero-section { padding-top: .75rem; padding-bottom: .75rem; }
+            .content-section { padding-top: 1rem; padding-bottom: 2rem; }
+            #section-overview.overview-locked { height: auto; overflow: visible; }
+            .glass-card { padding: 1rem; border-radius: 18px; }
+            .glass-card:hover { transform: none; box-shadow: 0 8px 32px rgba(0,0,0,.3); }
+            .section-header { margin-bottom: .9rem; }
+            .section-header h2 { font-size: 1.18rem; line-height: 1.25; }
+            .section-subtitle { font-size: .78rem; line-height: 1.35; }
+
+            .hero-card { padding: 1rem; }
+            .hero-main { gap: .9rem; }
+            .hero-temp-block { min-width: 0; }
+            .hero-weather-icon { font-size: 3.2rem; margin-bottom: 0; }
+            .hero-temp { font-size: 3.55rem; }
+            .hero-details { width: 100%; min-width: 0; }
+            .hero-condition { font-size: 1.25rem; margin-bottom: .75rem; text-align: center; }
+            .hero-stats { gap: .55rem; }
+            .hero-stat { padding: .65rem; min-width: 0; }
+            .stat-label { font-size: .62rem; }
+            .stat-value { font-size: .9rem; overflow-wrap: anywhere; }
+
+            .quick-insights { gap: .6rem; }
+            .quick-insight { padding: .75rem .8rem; }
+
+            .daily-cards {
+                display: flex; grid-template-columns: none; gap: .65rem; overflow-x: auto;
+                scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+                padding: 0 .05rem .35rem;
+            }
+            .daily-card {
+                flex: 0 0 138px; min-width: 138px; min-height: 148px; padding: .9rem .75rem;
+                scroll-snap-align: start;
+            }
+            .forecast-hours { gap: .6rem; }
+            .hourly-item { min-width: 86px; }
+            .hourly-hint { align-items: flex-start; font-size: .72rem; }
+            .hourly-hint > span { max-width: 62%; }
+            .hourly-nav-btn { width: 38px; height: 38px; }
+
+            .section-nav { scroll-snap-type: x proximity; padding-bottom: env(safe-area-inset-bottom); }
+            .nav-tab {
+                flex: 0 0 72px; min-width: 72px; min-height: 58px; padding: .45rem .15rem;
+                scroll-snap-align: center; font-size: .62rem;
+            }
+
+            .wind-model-badges {
+                display: flex; flex-wrap: nowrap; gap: .35rem; overflow-x: auto;
+                -webkit-overflow-scrolling: touch; scrollbar-width: none;
+                margin: 0 -.1rem .6rem; padding: 0 .1rem .3rem;
+            }
+            .model-badge { flex: 0 0 auto; margin: 0; font-size: .64rem; padding: .28rem .55rem; }
+            .chart-container { height: 320px; min-height: 320px; max-height: 320px; margin-top: .15rem; }
+            .uv-chart-container { height: 210px; min-height: 210px; max-height: 210px; }
+            .mobile-chart-note { display: block; color: var(--text-muted); font-size: .68rem; line-height: 1.3; margin: -.1rem 0 .5rem; }
+            .wind-day-summary { grid-template-columns: 1fr 1fr; gap: .55rem; }
+            .wind-day-card { padding: .65rem; }
+            .wind-compass canvas { width: min(240px, 72vw) !important; height: min(240px, 72vw) !important; }
+            .wind-compass-info { width: 100%; gap: .5rem; justify-content: space-between; }
+            .wind-info-item { flex: 1 1 0; min-width: 0; }
+            .wind-info-value { font-size: 1.35rem; }
+
+            .marine-wind-card { padding: .9rem; gap: .75rem; }
+            .marine-wind-header { gap: .6rem; }
+            .marine-wind-header h3 { font-size: .95rem; }
+            #marine-wind-meta { font-size: .74rem; }
+            .marine-badge { font-size: .64rem; padding: .28rem .55rem; }
+            #marine-wind-map-wrap, #marine-wind-map-wrap.is-tall { height: 340px; min-height: 340px; }
+            .wind-stats-mini.auto-fit { grid-template-columns: 1fr 1fr; gap: .5rem; }
+            .wind-stat-mini { padding: .62rem; }
+            .wind-stat-mini-value { font-size: .9rem; }
+
+            #radar-map { height: 54vh; min-height: 340px; max-height: 470px; }
+            .radar-card { padding: .85rem; }
+            .radar-toolbar { top: 1.15rem; right: 1.15rem; gap: .3rem; }
+            .radar-tool { min-height: 38px; padding: .4rem .55rem; }
+            .radar-legend { gap: .4rem; }
+            .radar-legend-item { font-size: .65rem; }
+            #marine-wind-map .leaflet-control-attribution, #radar-map .leaflet-control-attribution {
+                max-width: 78%; white-space: normal; line-height: 1.15; font-size: 8px;
+            }
+            .uv-day-card { min-width: 138px; }
+        }
+
+        @media (min-width:431px) { .mobile-chart-note { display: none; } }
+
         @media (prefers-reduced-motion: reduce) {
 
             *,
@@ -2773,6 +2917,7 @@
                         <span class="model-badge mf">🟠 ARPEGE</span>
                         <span class="model-badge icon">🔵 ICON Glob.</span>
                     </div>
+                    <div class="mobile-chart-note">Colori = modelli · linea tratteggiata = raffiche</div>
                     <div class="chart-container"><canvas id="wind-chart"></canvas></div>
                     <div class="wind-day-summary" id="wind-day-summary"></div>
                 </div>
@@ -2862,6 +3007,7 @@
                         <span class="model-badge mf">🟠 ARPEGE</span>
                         <span class="model-badge icon">🔵 ICON Glob.</span>
                     </div>
+                    <div class="mobile-chart-note">Colori = modelli · tocca il grafico per i valori</div>
                     <div class="chart-container"><canvas id="precip-chart"></canvas></div>
                 </div>
                 <div class="glass-card precip-summary-card">
@@ -2887,6 +3033,7 @@
                     <span class="model-badge mf">🟠 ARPEGE</span>
                     <span class="model-badge icon">🔵 ICON Glob.</span>
                 </div>
+                <div class="mobile-chart-note">Colori = modelli · tocca il grafico per i valori</div>
                 <div class="chart-container"><canvas id="temp-chart"></canvas></div>
             </div>
             <div class="temp-extremes-grid" id="temp-extremes"></div>
@@ -3146,6 +3293,10 @@
             // Non usare endpoint tile Google non documentati dentro Leaflet.
             googleMapsApiKey: ''
         };
+
+        function isPhoneChartLayout() {
+            return window.matchMedia('(max-width: 500px)').matches;
+        }
         let SETTINGS_KEY = 'meteomix_settings';
         let FAV_KEY = 'meteomix_favorites';
         let tempState = { unit: 'C' };
@@ -3894,10 +4045,20 @@
             requestAnimationFrame(resizeCharts);
         }
 
+        let lastPhoneChartLayout = isPhoneChartLayout();
+
         function resizeCharts() {
             ['_windChart', '_precipChart', '_tempChart', '_uvChart'].forEach(name => {
                 if (window[name]) window[name].resize();
             });
+
+            const phoneNow = isPhoneChartLayout();
+            if (phoneNow !== lastPhoneChartLayout && Object.keys(appData || {}).length) {
+                lastPhoneChartLayout = phoneNow;
+                renderWind();
+                renderPrecip();
+                renderTemp();
+            }
         }
 
         function setupIOSViewportAndEvents() {
@@ -4355,6 +4516,7 @@
             const labels = buildHourlyLabels(h.time, ni, hours);
 
             const ctxWind = document.getElementById('wind-chart').getContext('2d');
+            const phoneChart = isPhoneChartLayout();
             // Vento per Sardegna: ItaliaMeteo ICON-2I + ICON-EU e confronto globale
             const datasets = ['italia2i', 'icon_eu', 'arpege', 'gfs', 'ecmwf', 'icon'].filter(k => appData[k]?.hourly?.wind_speed_10m).map(k => {
                 let grad = ctxWind.createLinearGradient(0, 0, 0, 300);
@@ -4364,9 +4526,11 @@
                     label: MODELS[k].name,
                     data: appData[k].hourly.wind_speed_10m.slice(ni, ni + hours),
                     borderColor: MODELS[k].color,
-                    backgroundColor: grad,
-                    fill: true,
-                    pointRadius: ctx => ctx.dataIndex === 0 || String(labels[ctx.dataIndex]).includes('\n') ? 4 : 0,
+                    backgroundColor: phoneChart ? 'transparent' : grad,
+                    fill: !phoneChart,
+                    borderWidth: phoneChart ? 2 : 2.5,
+                    tension: .22,
+                    pointRadius: ctx => phoneChart ? 0 : (ctx.dataIndex === 0 || String(labels[ctx.dataIndex]).includes('\n') ? 4 : 0),
                     pointHoverRadius: 6
                 };
             });
@@ -4382,7 +4546,11 @@
                     maintainAspectRatio: false,
                     interaction: { mode: 'index', intersect: false },
                     plugins: {
-                        legend: { labels: { color: '#94a3b8', font: { size: 11 } } },
+                        legend: {
+                            display: !phoneChart,
+                            position: 'bottom',
+                            labels: { color: '#94a3b8', font: { size: phoneChart ? 9 : 11 }, usePointStyle: true, boxWidth: 8, padding: phoneChart ? 8 : 12 }
+                        },
                         tooltip: {
                             callbacks: {
                                 title: items => String(items[0].label || '').replace('\n', ' '),
@@ -4391,8 +4559,8 @@
                         }
                     },
                     scales: {
-                        x: { ticks: { callback: chartDayTick, maxRotation: 0, autoSkip: true, maxTicksLimit: 12 }, grid: { display: false } },
-                        y: { ticks: { callback: v => v + ' km/h' }, beginAtZero: true }
+                        x: { ticks: { callback: chartDayTick, maxRotation: 0, autoSkip: true, maxTicksLimit: phoneChart ? 6 : 12, font: { size: phoneChart ? 9 : 11 } }, grid: { display: false } },
+                        y: { ticks: { callback: v => v + ' km/h', maxTicksLimit: phoneChart ? 5 : 8, font: { size: phoneChart ? 9 : 11 } }, beginAtZero: true }
                     }
                 }
             });
@@ -4476,30 +4644,11 @@
                 }
             );
 
-            const darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                maxZoom: 19,
-                minZoom: 6,
-                subdomains: 'abcd',
-                attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
-            });
-
-            marineWindBaseLayers = {
-                '🛰️ Satellite': satelliteLayer,
-                '🌑 Scura': darkLayer
-            };
-
-            const firstLayer = MAP_CONFIG.preferredBase === 'dark' ? darkLayer : satelliteLayer;
-            firstLayer.addTo(marineWindMap);
-
-            L.control.layers(marineWindBaseLayers, null, {
-                position: 'topright',
-                collapsed: true
-            }).addTo(marineWindMap);
-
-            marineWindMap.on('baselayerchange', event => {
-                const provider = document.getElementById('marine-map-provider');
-                if (provider) provider.textContent = event?.name?.includes('Satellite') ? '🛰️ Satellite' : '🌑 Mappa scura';
-            });
+            // Regola UI: tutte le mappe MeteoMix usano una base satellitare.
+            marineWindBaseLayers = { '🛰️ Satellite': satelliteLayer };
+            satelliteLayer.addTo(marineWindMap);
+            const provider = document.getElementById('marine-map-provider');
+            if (provider) provider.textContent = '🛰️ Satellite';
 
             const overlayCanvas = document.getElementById('marine-wind-overlay');
             if (overlayCanvas && overlayCanvas.parentElement !== mapEl) {
@@ -4980,6 +5129,7 @@
             const labels = buildHourlyLabels(h.time, ni, hours);
             if (window._precipChart) window._precipChart.destroy();
             const ctxPrecip = document.getElementById('precip-chart').getContext('2d');
+            const phoneChart = isPhoneChartLayout();
             const datasets = precipModels.filter(k => appData[k]?.hourly?.precipitation).map(k => {
                 let grad = ctxPrecip.createLinearGradient(0, 0, 0, 300);
                 grad.addColorStop(0, MODELS[k].color + '66');
@@ -4988,8 +5138,12 @@
                     label: MODELS[k].name,
                     data: appData[k].hourly.precipitation.slice(ni, ni + hours),
                     borderColor: MODELS[k].color,
-                    backgroundColor: grad,
-                    fill: true
+                    backgroundColor: phoneChart ? 'transparent' : grad,
+                    fill: !phoneChart,
+                    borderWidth: phoneChart ? 2 : 2.5,
+                    tension: .22,
+                    pointRadius: 0,
+                    pointHoverRadius: 5
                 };
             });
             window._precipChart = new Chart(ctxPrecip, {
@@ -4999,7 +5153,11 @@
                     maintainAspectRatio: false,
                     interaction: { mode: 'index', intersect: false },
                     plugins: {
-                        legend: { labels: { color: '#94a3b8', font: { size: 11 } } },
+                        legend: {
+                            display: !phoneChart,
+                            position: 'bottom',
+                            labels: { color: '#94a3b8', font: { size: phoneChart ? 9 : 11 }, usePointStyle: true, boxWidth: 8, padding: phoneChart ? 8 : 12 }
+                        },
                         tooltip: {
                             callbacks: {
                                 title: items => String(items[0].label || '').replace('\n', ' '),
@@ -5008,8 +5166,8 @@
                         }
                     },
                     scales: {
-                        x: { ticks: { callback: chartDayTick, maxRotation: 0, autoSkip: true, maxTicksLimit: 12 }, grid: { display: false } },
-                        y: { ticks: { callback: v => v + ' mm' }, min: 0 }
+                        x: { ticks: { callback: chartDayTick, maxRotation: 0, autoSkip: true, maxTicksLimit: phoneChart ? 6 : 12, font: { size: phoneChart ? 9 : 11 } }, grid: { display: false } },
+                        y: { ticks: { callback: v => v + ' mm', maxTicksLimit: phoneChart ? 5 : 8, font: { size: phoneChart ? 9 : 11 } }, min: 0 }
                     }
                 }
             });
@@ -5039,6 +5197,7 @@
             const labels = buildHourlyLabels(h.time, ni, hours);
             if (window._tempChart) window._tempChart.destroy();
             const ctxTemp = document.getElementById('temp-chart').getContext('2d');
+            const phoneChart = isPhoneChartLayout();
             const datasets = tempModels.filter(k => appData[k]?.hourly?.temperature_2m).map(k => {
                 let grad = ctxTemp.createLinearGradient(0, 0, 0, 300);
                 grad.addColorStop(0, MODELS[k].color + '33');
@@ -5047,8 +5206,12 @@
                     label: MODELS[k].name,
                     data: appData[k].hourly.temperature_2m.slice(ni, ni + hours).map(v => tempState.unit === 'F' ? toFahrenheit(v) : v),
                     borderColor: MODELS[k].color,
-                    backgroundColor: grad,
-                    fill: true
+                    backgroundColor: phoneChart ? 'transparent' : grad,
+                    fill: !phoneChart,
+                    borderWidth: phoneChart ? 2 : 2.5,
+                    tension: .22,
+                    pointRadius: 0,
+                    pointHoverRadius: 5
                 };
             });
             window._tempChart = new Chart(ctxTemp, {
@@ -5058,7 +5221,11 @@
                     maintainAspectRatio: false,
                     interaction: { mode: 'index', intersect: false },
                     plugins: {
-                        legend: { labels: { color: '#94a3b8', font: { size: 11 } } },
+                        legend: {
+                            display: !phoneChart,
+                            position: 'bottom',
+                            labels: { color: '#94a3b8', font: { size: phoneChart ? 9 : 11 }, usePointStyle: true, boxWidth: 8, padding: phoneChart ? 8 : 12 }
+                        },
                         tooltip: {
                             callbacks: {
                                 title: items => String(items[0].label || '').replace('\n', ' '),
@@ -5067,8 +5234,8 @@
                         }
                     },
                     scales: {
-                        x: { ticks: { callback: chartDayTick, maxRotation: 0, autoSkip: true, maxTicksLimit: 12 }, grid: { display: false } },
-                        y: { ticks: { callback: v => `${v}°${tempState.unit}` } }
+                        x: { ticks: { callback: chartDayTick, maxRotation: 0, autoSkip: true, maxTicksLimit: phoneChart ? 6 : 12, font: { size: phoneChart ? 9 : 11 } }, grid: { display: false } },
+                        y: { ticks: { callback: v => `${v}°${tempState.unit}`, maxTicksLimit: phoneChart ? 6 : 9, font: { size: phoneChart ? 9 : 11 } } }
                     }
                 }
             });
@@ -5221,6 +5388,7 @@
                 const dt = new Date(t);
                 return i === 0 ? 'Oggi' : ['D', 'L', 'M', 'M', 'G', 'V', 'S'][dt.getDay()];
             });
+            const phoneChart = isPhoneChartLayout();
             window._uvChart = new Chart(document.getElementById('uv-chart'), {
                 type: 'bar', data: { labels: uvLabels, datasets: [{ label: 'UV Max', data: uvData.slice(0, 7), backgroundColor: uvColors, borderRadius: 8, borderSkipped: false }] },
                 options: {
@@ -5231,8 +5399,8 @@
                         tooltip: { backgroundColor: 'rgba(10,14,26,0.9)', callbacks: { label: ctx => `UV ${ctx.raw?.toFixed(1)}` } }
                     },
                     scales: {
-                        x: { ticks: { color: '#94a3b8', font: { weight: 700 } }, grid: { display: false } },
-                        y: { ticks: { color: '#64748b', stepSize: 3 }, grid: { color: 'rgba(255,255,255,0.06)' }, min: 0, suggestedMax: 12 }
+                        x: { ticks: { color: '#94a3b8', font: { weight: 700, size: phoneChart ? 10 : 12 } }, grid: { display: false } },
+                        y: { ticks: { color: '#64748b', stepSize: 3, font: { size: phoneChart ? 9 : 11 } }, grid: { color: 'rgba(255,255,255,0.06)' }, min: 0, suggestedMax: 12 }
                     }
                 }
             });
@@ -5268,7 +5436,7 @@
             // tap: false essenziale per Safari mobile
             const map = L.map('radar-map', {
                 zoomControl: true,
-                attributionControl: false,
+                attributionControl: true,
                 tap: false,
                 touchZoom: 'center',
                 scrollWheelZoom: true,
@@ -5293,10 +5461,17 @@
                 }).observe(mapEl);
             }
 
-            // keepBuffer massimizza la cache visiva, updateWhenIdle evita flash
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                maxZoom: 20, keepBuffer: 16, updateWhenIdle: false, updateWhenZooming: false
-            }).addTo(map);
+            // Base satellitare obbligatoria per tutte le mappe MeteoMix.
+            L.tileLayer(
+                'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                {
+                    maxZoom: 19,
+                    keepBuffer: 16,
+                    updateWhenIdle: false,
+                    updateWhenZooming: false,
+                    attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics and contributors'
+                }
+            ).addTo(map);
 
             L.circleMarker([lat, lon], { radius: 8, color: '#38bdf8', fillColor: '#38bdf8', fillOpacity: 0.8, weight: 2 }).bindPopup('📍 Posizione attuale').addTo(map);
 
@@ -5397,6 +5572,7 @@
                     document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
 
                     tab.classList.add('active');
+                    tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                     document.getElementById('section-' + tab.dataset.section).classList.add('active');
                     setOverviewVerticalLock(tab.dataset.section === 'overview');
 
