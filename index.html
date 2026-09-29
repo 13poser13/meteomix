@@ -8,9 +8,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="MeteoMix">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>MeteoMix — Previsioni Multi-Maodello</title>
+    <title>MeteoMix v2 — 6 Modelli, Accordo & Satellite</title>
     <meta name="description"
-        content="Dashboard meteo avanzata che combina più modelli meteorologici specializzati per previsioni accurate">
+        content="Dashboard meteo multi-modello con indice di accordo, aggiornamento automatico e mappa satellitare con vento">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -558,172 +558,7 @@
         .hero-condition {
             font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: .6rem;
-        }
-
-        /* ===== AFFIDABILITÀ PREVISIONE (agreement tra modelli) ===== */
-        .confidence-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: .4rem;
-            padding: .35rem .7rem;
-            border-radius: 999px;
-            font-size: .72rem;
-            font-weight: 600;
-            letter-spacing: .2px;
             margin-bottom: 1.25rem;
-            border: 1px solid transparent;
-            cursor: default;
-        }
-
-        .confidence-badge .confidence-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .confidence-badge.high {
-            background: rgba(52, 211, 153, 0.12);
-            color: var(--accent-green);
-            border-color: rgba(52, 211, 153, 0.25);
-        }
-
-        .confidence-badge.high .confidence-dot {
-            background: var(--accent-green);
-            box-shadow: 0 0 6px var(--accent-green);
-        }
-
-        .confidence-badge.medium {
-            background: rgba(251, 191, 36, 0.12);
-            color: var(--accent-yellow);
-            border-color: rgba(251, 191, 36, 0.25);
-        }
-
-        .confidence-badge.medium .confidence-dot {
-            background: var(--accent-yellow);
-            box-shadow: 0 0 6px var(--accent-yellow);
-        }
-
-        .confidence-badge.low {
-            background: rgba(248, 113, 113, 0.12);
-            color: var(--accent-red);
-            border-color: rgba(248, 113, 113, 0.25);
-        }
-
-        .confidence-badge.low .confidence-dot {
-            background: var(--accent-red);
-            box-shadow: 0 0 6px var(--accent-red);
-        }
-
-        .confidence-detail {
-            font-size: .78rem;
-            color: var(--text-muted);
-            margin: -0.9rem 0 1.25rem;
-            line-height: 1.4;
-        }
-
-        /* ===== TOAST ===== */
-        #toast-container {
-            position: fixed;
-            left: 50%;
-            bottom: calc(95px + env(safe-area-inset-bottom));
-            transform: translateX(-50%);
-            z-index: 1200;
-            display: flex;
-            flex-direction: column;
-            gap: .5rem;
-            align-items: center;
-            width: min(92vw, 420px);
-            pointer-events: none;
-        }
-
-        .toast {
-            pointer-events: auto;
-            display: flex;
-            align-items: center;
-            gap: .6rem;
-            width: 100%;
-            padding: .75rem 1rem;
-            border-radius: var(--radius-md);
-            background: rgba(17, 24, 39, 0.96);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-card);
-            font-size: .85rem;
-            color: var(--text-primary);
-            animation: toastIn .25s ease-out;
-        }
-
-        .toast.warn {
-            border-color: rgba(251, 191, 36, 0.35);
-        }
-
-        .toast.error {
-            border-color: rgba(248, 113, 113, 0.35);
-        }
-
-        .toast.success {
-            border-color: rgba(52, 211, 153, 0.35);
-        }
-
-        .toast.hide {
-            animation: toastOut .25s ease-in forwards;
-        }
-
-        @keyframes toastIn {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes toastOut {
-            to {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-        }
-
-        /* ===== SCOSTAMENTO MODELLO (models tab) ===== */
-        .model-delta {
-            font-size: .68rem;
-            font-weight: 600;
-            font-family: var(--font);
-            padding: .15rem .5rem;
-            border-radius: 999px;
-            white-space: nowrap;
-        }
-
-        .model-delta.aligned {
-            background: rgba(52, 211, 153, 0.12);
-            color: var(--accent-green);
-        }
-
-        .model-delta.mid {
-            background: rgba(251, 191, 36, 0.12);
-            color: var(--accent-yellow);
-        }
-
-        .model-delta.off {
-            background: rgba(248, 113, 113, 0.12);
-            color: var(--accent-red);
-        }
-
-        .models-summary {
-            font-size: .82rem;
-            color: var(--text-secondary);
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md);
-            padding: .75rem 1rem;
-            margin-bottom: 1rem;
-            line-height: 1.5;
         }
 
         .hero-stats {
@@ -953,6 +788,112 @@
             font-size: 1.05rem;
             font-weight: 600;
             margin-bottom: 1rem;
+        }
+
+
+        /* ===== MODEL AGREEMENT ===== */
+        .model-agreement {
+            margin-top: .9rem;
+            padding: 1rem 1.05rem;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: var(--radius-md);
+            background: rgba(4, 10, 22, 0.28);
+            position: relative;
+            z-index: 1;
+        }
+
+        .agreement-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .8rem;
+            margin-bottom: .75rem;
+        }
+
+        .agreement-title {
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            min-width: 0;
+        }
+
+        .agreement-title strong {
+            font-size: .9rem;
+        }
+
+        .agreement-title small {
+            display: block;
+            color: var(--text-muted);
+            font-size: .68rem;
+            margin-top: .08rem;
+        }
+
+        .agreement-score {
+            flex: 0 0 auto;
+            min-width: 82px;
+            text-align: right;
+            font-family: var(--mono);
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--accent-green);
+        }
+
+        .agreement-meter {
+            height: 7px;
+            background: rgba(255,255,255,.07);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .agreement-meter-fill {
+            width: 0%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-yellow), var(--accent-green));
+            transition: width .45s ease;
+        }
+
+        .agreement-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .55rem;
+            margin-top: .7rem;
+        }
+
+        .agreement-metric {
+            padding: .55rem .65rem;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: var(--radius-sm);
+            background: rgba(255,255,255,.025);
+        }
+
+        .agreement-metric span {
+            display: block;
+            color: var(--text-muted);
+            font-size: .64rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: .25px;
+        }
+
+        .agreement-metric strong {
+            display: block;
+            margin-top: .18rem;
+            color: var(--text-primary);
+            font-size: .8rem;
+            line-height: 1.3;
+        }
+
+        .agreement-note {
+            color: var(--text-muted);
+            font-size: .67rem;
+            margin-top: .6rem;
+            line-height: 1.35;
+        }
+
+        @media (max-width: 640px) {
+            .agreement-metrics { grid-template-columns: 1fr; }
+            .agreement-head { align-items: flex-start; }
         }
 
         /* ===== HOURLY SCROLL ===== */
@@ -1810,10 +1751,6 @@
             font-size: 1rem;
             font-weight: 700;
             font-family: var(--mono);
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: .3rem;
         }
 
         /* ===== FOOTER ===== */
@@ -2606,7 +2543,7 @@
                     <span class="logo-icon">🌦️</span>
                     <span class="logo-text">MeteoMix</span>
                 </h1>
-                <span class="logo-badge">Multi-Modello</span>
+                <span class="logo-badge">6 Modelli · Auto</span>
             </div>
             <div class="header-center">
                 <div class="location-display" id="location-display">
@@ -2623,7 +2560,7 @@
             </form>
             <div class="header-right">
                 <div class="update-info">
-                    <span class="update-label">Aggiornato</span>
+                    <span class="update-label" id="update-label">Aggiornato · --/6</span>
                     <span class="update-time" id="update-time">--:--</span>
                 </div>
                 <button class="refresh-btn" id="refresh-btn" title="Aggiorna">
@@ -2643,7 +2580,8 @@
                     <button type="button" data-unit="F">°F</button>
                 </div>
                 <button class="chip" id="gps-now-btn" type="button">📍 GPS ora</button>
-                <button class="chip" id="soft-refresh-btn" type="button">↻ Aggiorna dati</button>
+                <button class="chip" id="soft-refresh-btn" type="button">↻ Aggiorna ora</button>
+                <span class="chip" id="auto-refresh-chip" title="Aggiornamento automatico quando la pagina è aperta" style="cursor:default">⏱ Auto 30 min</span>
             </div>
         </section>
 
@@ -2676,12 +2614,6 @@
                     </div>
                     <div class="hero-details">
                         <div class="hero-condition" id="hero-condition">--</div>
-                        <div class="confidence-badge high" id="confidence-badge"
-                            title="Concordanza tra i modelli meteorologici disponibili">
-                            <span class="confidence-dot"></span>
-                            <span id="confidence-label">Calcolo affidabilità…</span>
-                        </div>
-                        <p class="confidence-detail" id="confidence-detail"></p>
                         <div class="hero-stats">
                             <div class="hero-stat">
                                 <span class="stat-icon">💧</span>
@@ -2738,6 +2670,22 @@
                             <span class="quick-insight-value">--</span>
                         </span>
                     </div>
+                </div>
+                <div class="model-agreement" id="model-agreement" aria-live="polite">
+                    <div class="agreement-head">
+                        <div class="agreement-title">
+                            <span style="font-size:1.35rem">🤝</span>
+                            <span><strong>Accordo dei 6 modelli</strong><small>Confronto delle prossime 12 ore</small></span>
+                        </div>
+                        <div class="agreement-score" id="agreement-score">--</div>
+                    </div>
+                    <div class="agreement-meter"><div class="agreement-meter-fill" id="agreement-meter-fill"></div></div>
+                    <div class="agreement-metrics">
+                        <div class="agreement-metric"><span>Temperatura</span><strong id="agreement-temp">--</strong></div>
+                        <div class="agreement-metric"><span>Pioggia</span><strong id="agreement-rain">--</strong></div>
+                        <div class="agreement-metric"><span>Vento</span><strong id="agreement-wind">--</strong></div>
+                    </div>
+                    <div class="agreement-note" id="agreement-note">Indice di convergenza fra modelli: non è una percentuale di certezza meteorologica.</div>
                 </div>
             </div>
         </section>
@@ -2822,6 +2770,8 @@
                         <span class="model-badge icon">🔵 ICON-EU</span>
                         <span class="model-badge ecmwf">🟡 ECMWF</span>
                         <span class="model-badge gfs">🟢 GFS</span>
+                        <span class="model-badge mf">🟠 ARPEGE</span>
+                        <span class="model-badge icon">🔵 ICON Glob.</span>
                     </div>
                     <div class="chart-container"><canvas id="wind-chart"></canvas></div>
                     <div class="wind-day-summary" id="wind-day-summary"></div>
@@ -2846,7 +2796,10 @@
                         <h3 id="marine-wind-title">📍 Località: --</h3>
                         <p id="marine-wind-meta">In attesa dati vento...</p>
                     </div>
-                    <span class="marine-badge" id="marine-badge">💨 Vento</span>
+                    <div style="display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+                        <span class="marine-badge" id="marine-map-provider">🛰️ Satellite</span>
+                        <span class="marine-badge" id="marine-badge">💨 Vento</span>
+                    </div>
                 </div>
 
                 <!-- Body: map + wind panel -->
@@ -2906,6 +2859,8 @@
                         <span class="model-badge icon">🔵 ICON-EU (7km)</span>
                         <span class="model-badge gfs">🟢 GFS</span>
                         <span class="model-badge ecmwf">🟡 ECMWF</span>
+                        <span class="model-badge mf">🟠 ARPEGE</span>
+                        <span class="model-badge icon">🔵 ICON Glob.</span>
                     </div>
                     <div class="chart-container"><canvas id="precip-chart"></canvas></div>
                 </div>
@@ -2929,6 +2884,7 @@
                     <span class="model-badge icon">🔵 ICON-EU (7km)</span>
                     <span class="model-badge ecmwf">🟡 ECMWF</span>
                     <span class="model-badge gfs">🟢 GFS</span>
+                    <span class="model-badge mf">🟠 ARPEGE</span>
                     <span class="model-badge icon">🔵 ICON Glob.</span>
                 </div>
                 <div class="chart-container"><canvas id="temp-chart"></canvas></div>
@@ -3021,17 +2977,16 @@
                 <h2>🔬 Dettaglio Modelli Meteorologici</h2>
                 <p class="section-subtitle">Confronto diretto tra tutti i modelli utilizzati</p>
             </div>
-            <div class="models-summary" id="models-summary"></div>
             <div class="models-grid" id="models-grid"></div>
         </section>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>MeteoMix — Dati da <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a> | Modelli:
-                ItaliaMeteo ICON-2I,
-                ICON-EU, ECMWF IFS, GFS e ICON globale per Sardegna</p>
-            <p class="footer-note">Le previsioni multi-modello migliorano l'accuratezza combinando diverse fonti
+            <p>MeteoMix — Dati da <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a> | 6 modelli:
+                ItaliaMeteo ICON-2I, ICON-EU, ECMWF IFS, GFS, Météo-France ARPEGE Europe e ICON globale</p>
+            <p class="footer-note">Il confronto multi-modello aiuta a leggere meglio accordo e incertezza tra diverse fonti
                 specializzate</p>
+            <p class="footer-note">Satellite: Esri World Imagery · Google Maps predisposto solo tramite API ufficiale con chiave personale.</p>
             <div
                 style="margin-top: 1rem; font-weight: 500; font-size: 1.1rem; color: var(--text-primary); text-align: center;">
                 Fatto da Poser</div>
@@ -3039,8 +2994,6 @@
                 codex e antigravity</div>
         </footer>
     </div>
-
-    <div id="toast-container" aria-live="polite"></div>
 
     <script>
         const HAS_CHART = typeof window.Chart !== 'undefined';
@@ -3098,17 +3051,17 @@
         }
 
         // MeteoMix — Multi-Model Weather App
-        // Orizzonti consigliati:
-        // 0-72h  → ItaliaMeteo ARPAE ICON-2I (2km)              — alta risoluzione Italia/Sardegna
-        // 0-168h → ICON-EU (7km)                                — breve-medio Europa
-        // 2-10d  → ECMWF IFS + GFS + ICON globale               — previsione generale
-        // 10-16d → solo tendenza GFS/ECMWF ensemble
+        // Set volutamente limitato a 6 modelli: abbastanza confronto senza moltiplicare richieste e grafici.
+        // 0-72h  → ICON-2I (2 km)                               — dettaglio Italia/Sardegna
+        // 0-5d   → ICON-EU (7 km) + ARPEGE Europe (~11 km)      — confronto regionale europeo
+        // medio  → ECMWF IFS + GFS + ICON globale               — tendenza generale
         const MODELS = {
-            italia2i: { name: 'ICON-2I', org: 'ItaliaMeteo ARPAE (2km — 0-72h)', color: '#ef4444', emoji: '🔴', horizon: 'local', url: 'https://api.open-meteo.com/v1/forecast', modelParam: 'italia_meteo_arpae_icon_2i' },
-            icon_eu: { name: 'ICON-EU', org: 'DWD (7km — 0-7g)', color: '#60a5fa', emoji: '🔵', horizon: 'short', url: 'https://api.open-meteo.com/v1/dwd-icon', modelParam: 'icon_eu' },
-            ecmwf: { name: 'ECMWF IFS', org: 'Centro Europeo (2-10g)', color: '#fbbf24', emoji: '🟡', horizon: 'medium', url: 'https://api.open-meteo.com/v1/ecmwf' },
-            gfs: { name: 'GFS', org: 'NOAA USA (2-16g)', color: '#34d399', emoji: '🟢', horizon: 'medium', url: 'https://api.open-meteo.com/v1/gfs' },
-            icon: { name: 'ICON Glob.', org: 'DWD (2-10g)', color: '#818cf8', emoji: '🔵', horizon: 'medium', url: 'https://api.open-meteo.com/v1/dwd-icon' }
+            italia2i: { name: 'ICON-2I', org: 'ItaliaMeteo ARPAE (2km — 0-72h)', color: '#ef4444', emoji: '🔴', horizon: 'local', forecastDays: 3, url: 'https://api.open-meteo.com/v1/forecast', modelParam: 'italia_meteo_arpae_icon_2i' },
+            icon_eu: { name: 'ICON-EU', org: 'DWD (7km — 0-5g)', color: '#60a5fa', emoji: '🔵', horizon: 'short', forecastDays: 5, url: 'https://api.open-meteo.com/v1/dwd-icon', modelParam: 'icon_eu' },
+            arpege: { name: 'ARPEGE Europe', org: 'Météo-France (~11km — 0-4g)', color: '#fb923c', emoji: '🟠', horizon: 'short', forecastDays: 4, url: 'https://api.open-meteo.com/v1/meteofrance', modelParam: 'meteofrance_arpege_europe', unsupportedHourly: ['visibility', 'precipitation_probability'], unsupportedDaily: ['precipitation_probability_max', 'uv_index_max'] },
+            ecmwf: { name: 'ECMWF IFS', org: 'Centro Europeo (medio termine)', color: '#fbbf24', emoji: '🟡', horizon: 'medium', forecastDays: 10, url: 'https://api.open-meteo.com/v1/ecmwf' },
+            gfs: { name: 'GFS', org: 'NOAA USA (medio-lungo)', color: '#34d399', emoji: '🟢', horizon: 'medium', forecastDays: 10, url: 'https://api.open-meteo.com/v1/gfs' },
+            icon: { name: 'ICON Glob.', org: 'DWD (~11km — 0-7g)', color: '#818cf8', emoji: '🔵', horizon: 'medium', forecastDays: 7, url: 'https://api.open-meteo.com/v1/dwd-icon', modelParam: 'icon_global' }
         };
 
         const SARDINIA_DEFAULT = { lat: 39.176, lon: 9.043, city: "Frutti d'Oro, Sardegna" };
@@ -3186,12 +3139,28 @@
         let marineWindMap = null;
         let marineWindMarker = null;
         let marineWindArrow = null;
+        let marineWindBaseLayers = null;
+        const MAP_CONFIG = {
+            preferredBase: 'satellite',
+            // Google Maps ufficiale richiede una chiave API personale e un progetto con billing.
+            // Non usare endpoint tile Google non documentati dentro Leaflet.
+            googleMapsApiKey: ''
+        };
         let SETTINGS_KEY = 'meteomix_settings';
         let FAV_KEY = 'meteomix_favorites';
         let tempState = { unit: 'C' };
         let favorites = [];
         let latLonState = { lat: null, lon: null };
         let lat, lon;
+
+        // Aggiornamenti meteo: leggeri, non ricaricano la pagina e mantengono i dati precedenti
+        // se un singolo modello è temporaneamente indisponibile.
+        const AUTO_REFRESH_MS = 30 * 60 * 1000;
+        const FETCH_TIMEOUT_MS = 12000;
+        let lastSuccessfulUpdate = 0;
+        let lastFetchStats = { ok: 0, total: Object.keys(MODELS).length, failed: [] };
+        let refreshInFlight = false;
+        let autoRefreshTimer = null;
 
         function toFahrenheit(c) {
             return (c * 9 / 5) + 32;
@@ -3201,20 +3170,6 @@
             if (tempC == null || isNaN(tempC)) return '--';
             const value = tempState.unit === 'F' ? toFahrenheit(tempC) : tempC;
             return `${value.toFixed(digits)}°${tempState.unit}`;
-        }
-
-        function showToast(message, type = 'info', duration = 4200) {
-            const container = document.getElementById('toast-container');
-            if (!container) return;
-            const icons = { info: 'ℹ️', warn: '⚠️', error: '❌', success: '✅' };
-            const el = document.createElement('div');
-            el.className = `toast${type !== 'info' ? ' ' + type : ''}`;
-            el.innerHTML = `<span>${icons[type] || icons.info}</span><span>${message}</span>`;
-            container.appendChild(el);
-            setTimeout(() => {
-                el.classList.add('hide');
-                setTimeout(() => el.remove(), 250);
-            }, duration);
         }
 
         function applyRuntimeProfile() {
@@ -3335,17 +3290,13 @@
             const softRefreshBtn = document.getElementById('soft-refresh-btn');
             if (softRefreshBtn && softRefreshBtn.dataset.bound !== 'true') {
                 softRefreshBtn.dataset.bound = 'true';
-                softRefreshBtn.addEventListener('click', async () => {
-                    if (lat == null || lon == null) return;
-                    softRefreshBtn.disabled = true;
-                    softRefreshBtn.textContent = '⏳ Aggiorno...';
-                    try {
-                        await loadLocation(lat, lon, appData.locationName || '');
-                    } finally {
-                        softRefreshBtn.disabled = false;
-                        softRefreshBtn.textContent = '↻ Aggiorna dati';
-                    }
-                });
+                softRefreshBtn.addEventListener('click', () => refreshCurrentWeather({ source: 'manual' }));
+            }
+
+            const headerRefreshBtn = document.getElementById('refresh-btn');
+            if (headerRefreshBtn && headerRefreshBtn.dataset.bound !== 'true') {
+                headerRefreshBtn.dataset.bound = 'true';
+                headerRefreshBtn.addEventListener('click', () => refreshCurrentWeather({ source: 'manual' }));
             }
 
             const gpsNowBtn = document.getElementById('gps-now-btn');
@@ -3361,7 +3312,7 @@
                             const glat = parseFloat(pos.coords.latitude);
                             const glon = parseFloat(pos.coords.longitude);
                             if (!isInSardinia(glat, glon)) {
-                                showToast("La tua posizione risulta fuori dalla Sardegna.", 'warn');
+                                alert("La tua posizione risulta fuori dalla Sardegna.");
                                 return;
                             }
                             await loadLocation(glat, glon, '');
@@ -3534,7 +3485,7 @@
             latLonState.lon = parseFloat(lo);
             appData = name ? { locationName: name } : {};
             setLoading(25, 'Caricamento dati meteo…');
-            await fetchAllModels();
+            await fetchAllModels({ preserveExisting: false });
             savePos(lat, lon, appData.locationName || name || '');
             if (appData.locationName) {
                 addFavorite({ name: appData.locationName, lat, lon });
@@ -3766,80 +3717,76 @@
         }
 
 
-        async function fetchModel(key, model) {
-            const hourlyParams = 'temperature_2m,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,cloud_cover,surface_pressure,apparent_temperature,visibility,precipitation_probability';
-            // Modelli a lungo raggio hanno più giorni di forecast
-            const days = model.horizon === 'local' ? 3 : model.horizon === 'short' ? 7 : 10;
-            const dailyParams = 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,uv_index_max,sunrise,sunset,shortwave_radiation_sum';
+        function withoutUnsupported(params, unsupported = []) {
+            const blocked = new Set(unsupported || []);
+            return params.filter(p => !blocked.has(p)).join(',');
+        }
 
-            const url = buildForecastUrl(model, lat, lon, hourlyParams, dailyParams, days);
-
-            const attempt = async () => {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 12000);
-                try {
-                    const r = await fetch(url, { signal: controller.signal });
-                    if (!r.ok) {
-                        let detail = '';
-                        try {
-                            detail = (await r.json())?.reason || '';
-                        } catch (_) { }
-                        throw new Error(`${model.name}: HTTP ${r.status}${detail ? ' · ' + detail : ''}`);
-                    }
-                    const d = normalizeModelData(await r.json(), model);
-                    return { key, data: d, ok: true };
-                } finally {
-                    clearTimeout(timeoutId);
-                }
-            };
-
+        async function fetchJsonWithTimeout(url, timeoutMs = FETCH_TIMEOUT_MS) {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), timeoutMs);
             try {
-                return await attempt();
-            } catch (e1) {
-                // Un solo retry veloce: le API meteo hanno saltuari timeout/500 transitori
-                try {
-                    return await attempt();
-                } catch (e2) {
-                    const timedOut = e2?.name === 'AbortError';
-                    return { key, ok: false, error: timedOut ? new Error(`${model.name}: timeout`) : e2 };
+                const r = await fetch(url, { signal: controller.signal, cache: 'no-store' });
+                if (!r.ok) {
+                    let detail = '';
+                    try { detail = (await r.clone().json())?.reason || ''; } catch (_) { }
+                    const err = new Error(`HTTP ${r.status}${detail ? ' · ' + detail : ''}`);
+                    err.status = r.status;
+                    throw err;
                 }
+                return await r.json();
+            } finally {
+                clearTimeout(timer);
             }
         }
 
-        async function fetchAllModels() {
-            const entries = Object.entries(MODELS);
-
-            // Avvia il reverse geocoding in parallelo (se non è già in cache)
-            const geoPromise = appData.locationName ? Promise.resolve() :
-                fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=it`)
-                    .then(r => r.json())
-                    .catch(() => null);
-
-            const results = await Promise.allSettled(entries.map(([k, m]) => fetchModel(k, m)));
-
-            let loaded = 0;
-            const failedModels = [];
-
-            results.forEach(r => {
-                if (r.status === 'fulfilled' && r.value.ok) {
-                    appData[r.value.key] = r.value.data;
-                    loaded++;
-                } else if (r.status === 'fulfilled') {
-                    failedModels.push(MODELS[r.value.key]?.name || r.value.key);
-                }
-
-                setLoading(25 + (loaded / entries.length) * 60);
-            });
-
-            appData._failedModels = failedModels;
-            if (failedModels.length && loaded > 0) {
-                showToast(`${failedModels.length} modell${failedModels.length === 1 ? 'o' : 'i'} non disponibil${failedModels.length === 1 ? 'e' : 'i'} ora (${failedModels.join(', ')}). Uso gli altri.`, 'warn', 5500);
-            } else if (loaded === 0) {
-                showToast('Nessun modello meteo raggiungibile. Controlla la connessione e riprova.', 'error', 6000);
-            }
+        async function fetchModel(key, model) {
+            const hourlyBase = ['temperature_2m','relative_humidity_2m','precipitation','weather_code','wind_speed_10m','wind_direction_10m','wind_gusts_10m','cloud_cover','surface_pressure','apparent_temperature','visibility','precipitation_probability'];
+            const dailyBase = ['weather_code','temperature_2m_max','temperature_2m_min','precipitation_sum','precipitation_probability_max','wind_speed_10m_max','wind_gusts_10m_max','uv_index_max','sunrise','sunset','shortwave_radiation_sum'];
+            const hourlyParams = withoutUnsupported(hourlyBase, model.unsupportedHourly);
+            const dailyParams = withoutUnsupported(dailyBase, model.unsupportedDaily);
+            const days = model.forecastDays || (model.horizon === 'local' ? 3 : model.horizon === 'short' ? 5 : 10);
+            const url = buildForecastUrl(model, lat, lon, hourlyParams, dailyParams, days);
 
             try {
-                // Attendi la fine del geocoding (solitamente già finito)
+                const raw = await fetchJsonWithTimeout(url);
+                const d = normalizeModelData(raw, model);
+                return { key, data: d, ok: true };
+            } catch (e) {
+                const reason = e?.name === 'AbortError' ? 'timeout' : (e?.message || 'errore rete');
+                return { key, ok: false, error: new Error(`${model.name}: ${reason}`) };
+            }
+        }
+
+        async function fetchAllModels({ preserveExisting = false } = {}) {
+            const entries = Object.entries(MODELS);
+
+            // Reverse geocoding in parallelo. Timeout corto: non deve mai bloccare il meteo.
+            const geoPromise = appData.locationName ? Promise.resolve(null) :
+                fetchJsonWithTimeout(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=it`, 7000)
+                    .catch(() => null);
+
+            const results = await Promise.all(entries.map(([k, m]) => fetchModel(k, m)));
+            let loaded = 0;
+            const failed = [];
+
+            results.forEach((result, index) => {
+                if (result.ok) {
+                    appData[result.key] = result.data;
+                    loaded++;
+                } else {
+                    failed.push(result.key);
+                    // In refresh manteniamo l'ultimo dato buono del modello; al primo avvio resta assente.
+                    if (!preserveExisting) delete appData[result.key];
+                    console.warn('[MeteoMix]', result.error?.message || result.key);
+                }
+                setLoading(25 + ((index + 1) / entries.length) * 60);
+            });
+
+            lastFetchStats = { ok: loaded, total: entries.length, failed };
+            if (loaded > 0) lastSuccessfulUpdate = Date.now();
+
+            try {
                 const gd = await geoPromise;
                 if (gd && gd.address) {
                     appData.locationName =
@@ -3847,91 +3794,66 @@
                         gd.address?.town ||
                         gd.address?.village ||
                         gd.display_name?.split(',')[0] ||
-                        'Posizione';
+                        appData.locationName || 'Posizione';
                 }
-            } catch (e) {
-                appData.locationName = 'Lat ' + parseFloat(lat).toFixed(2);
+            } catch (_) { }
+
+            if (!appData.locationName) appData.locationName = 'Lat ' + parseFloat(lat).toFixed(2);
+            return lastFetchStats;
+        }
+
+        async function refreshCurrentWeather({ source = 'auto' } = {}) {
+            if (refreshInFlight || lat == null || lon == null) return;
+            refreshInFlight = true;
+            const softRefreshBtn = document.getElementById('soft-refresh-btn');
+            const headerRefreshBtn = document.getElementById('refresh-btn');
+            const autoChip = document.getElementById('auto-refresh-chip');
+            if (softRefreshBtn) { softRefreshBtn.disabled = true; softRefreshBtn.textContent = '⏳ Aggiorno...'; }
+            if (headerRefreshBtn) headerRefreshBtn.disabled = true;
+            if (autoChip) autoChip.textContent = source === 'auto' ? '⏱ Auto: aggiorno…' : '⏱ Aggiornamento…';
+
+            try {
+                await fetchAllModels({ preserveExisting: true });
+                renderAll();
+            } finally {
+                refreshInFlight = false;
+                if (softRefreshBtn) { softRefreshBtn.disabled = false; softRefreshBtn.textContent = '↻ Aggiorna ora'; }
+                if (headerRefreshBtn) headerRefreshBtn.disabled = false;
+                if (autoChip) autoChip.textContent = '⏱ Auto 30 min';
             }
         }
 
-        // ── Affidabilità previsione: concordanza tra i modelli caricati ──
-        // Questa è la feature "core" di MeteoMix: più modelli concordano,
-        // più la previsione è statisticamente probabile. Calcoliamo lo
-        // scarto di temperatura ora-per-ora e l'accordo sì/no pioggia tra
-        // tutti i modelli disponibili nell'ora corrente.
-        function computeConfidence() {
-            const models = Object.keys(MODELS)
-                .map(k => ({ key: k, d: appData[k] }))
-                .filter(x => x.d?.hourly?.temperature_2m?.some(v => v != null));
-
-            if (models.length < 2) {
-                return { level: 'medium', label: 'Dato singolo modello', detail: 'Solo un modello disponibile in questo momento: non è possibile confrontare le fonti.', n: models.length, spread: null };
-            }
-
-            const temps = [];
-            const rainFlags = [];
-            models.forEach(({ d }) => {
-                const idx = getNowIdx(d.hourly.time);
-                const t = d.hourly.temperature_2m?.[idx];
-                if (t != null) temps.push(t);
-                const precip = d.hourly.precipitation?.[idx] ?? 0;
-                const code = d.hourly.weather_code?.[idx] ?? 0;
-                rainFlags.push(precip > 0.1 || [51, 53, 55, 61, 63, 65, 80, 81, 82, 95, 96, 99].includes(code));
-            });
-
-            const tMax = Math.max(...temps), tMin = Math.min(...temps);
-            const spread = +(tMax - tMin).toFixed(1);
-            const rainAgree = rainFlags.filter(Boolean).length;
-            const rainDisagree = rainFlags.length - rainAgree;
-            const rainSplit = Math.min(rainAgree, rainDisagree) > 0; // modelli in disaccordo su pioggia sì/no
-
-            let level, label;
-            if (spread <= 1.2 && !rainSplit) {
-                level = 'high';
-                label = `Affidabilità alta · ${models.length} modelli concordi`;
-            } else if (spread <= 3 && (!rainSplit || Math.min(rainAgree, rainDisagree) === 1)) {
-                level = 'medium';
-                label = `Affidabilità media · ±${spread}°C tra modelli`;
-            } else {
-                level = 'low';
-                label = `Affidabilità bassa · modelli discordanti`;
-            }
-
-            let detail = `Scarto di temperatura tra i ${models.length} modelli attivi: ${spread}°C.`;
-            if (rainSplit) {
-                detail += ` I modelli non sono d'accordo sulla presenza di pioggia in questo momento (${rainAgree}/${models.length} la prevedono).`;
-            } else if (rainAgree === models.length) {
-                detail += ` Tutti i modelli concordano sulla presenza di pioggia ora.`;
-            }
-
-            return { level, label, detail, n: models.length, spread };
-        }
-
-        function renderConfidence() {
-            const badge = document.getElementById('confidence-badge');
-            const labelEl = document.getElementById('confidence-label');
-            const detailEl = document.getElementById('confidence-detail');
-            if (!badge || !labelEl || !detailEl) return;
-
-            const c = computeConfidence();
-            badge.classList.remove('high', 'medium', 'low');
-            badge.classList.add(c.level);
-            labelEl.textContent = c.label;
-            detailEl.textContent = c.detail;
-            return c;
+        function startAutoRefresh() {
+            if (autoRefreshTimer) clearInterval(autoRefreshTimer);
+            const maybeRefresh = () => {
+                if (document.visibilityState !== 'visible' || !lastSuccessfulUpdate) return;
+                if (Date.now() - lastSuccessfulUpdate >= AUTO_REFRESH_MS) refreshCurrentWeather({ source: 'auto' });
+            };
+            autoRefreshTimer = setInterval(maybeRefresh, 60 * 1000);
+            document.addEventListener('visibilitychange', maybeRefresh, { passive: true });
+            window.addEventListener('focus', maybeRefresh, { passive: true });
         }
 
         function renderAll() {
             document.getElementById('location-name').textContent = appData.locationName;
             document.getElementById('coords-display').textContent = `${parseFloat(lat).toFixed(4)}°N, ${parseFloat(lon).toFixed(4)}°E`;
-            document.getElementById('update-time').textContent = new Date().toLocaleTimeString('it-IT', {
+            const updateDate = lastSuccessfulUpdate ? new Date(lastSuccessfulUpdate) : new Date();
+            document.getElementById('update-time').textContent = updateDate.toLocaleTimeString('it-IT', {
                 hour: '2-digit', minute: '2-digit'
             });
+            const updateLabel = document.getElementById('update-label');
+            if (updateLabel) {
+                const kept = lastFetchStats.failed.filter(k => !!appData[k]).length;
+                updateLabel.textContent = `Aggiornato · ${lastFetchStats.ok}/${lastFetchStats.total}${kept ? ` · ${kept} cache` : ''}`;
+                updateLabel.title = lastFetchStats.failed.length
+                    ? `Non aggiornati ora: ${lastFetchStats.failed.map(k => MODELS[k]?.name || k).join(', ')}`
+                    : 'Tutti i modelli aggiornati';
+            }
 
             const isValid = m => m?.hourly?.temperature_2m && m.hourly.temperature_2m.some(v => v !== null);
-            // Primario short-range Sardegna: ItaliaMeteo ICON-2I > ICON-EU
+            // Primario short-range Sardegna: ItaliaMeteo ICON-2I > ICON-EU > ARPEGE Europe
             // Primario medium: ECMWF > GFS > ICON globale
-            const primaryShort = [appData.italia2i, appData.icon_eu].find(isValid);
+            const primaryShort = [appData.italia2i, appData.icon_eu, appData.arpege].find(isValid);
             const primaryMedium = [appData.ecmwf, appData.gfs, appData.icon].find(isValid);
             const primary = primaryShort || primaryMedium || Object.values(appData).find(isValid);
 
@@ -3953,8 +3875,8 @@
             }
 
             renderHero(primaryShort || primary);
-            renderConfidence();
             renderQuickInsights(primaryShort || primary);
+            renderModelAgreement();
             renderHourly(primaryShort || primary);
             renderDaily(primaryMedium || primary);
             renderWind();
@@ -3969,12 +3891,6 @@
             setupUtilityActions();
 
             checkCommute();
-
-            document.getElementById('refresh-btn').onclick = () => {
-                localStorage.removeItem('meteomix_pos'); // forza rilevamento fresco
-                location.reload();
-            };
-
             requestAnimationFrame(resizeCharts);
         }
 
@@ -4219,6 +4135,116 @@
             if (values[2]) values[2].textContent = visibilityText;
         }
 
+        function clamp01(v) {
+            return Math.max(0, Math.min(1, v));
+        }
+
+        function mean(values) {
+            return values.length ? values.reduce((a, b) => a + b, 0) / values.length : null;
+        }
+
+        function stdDev(values) {
+            if (values.length < 2) return 0;
+            const m = mean(values);
+            return Math.sqrt(values.reduce((s, v) => s + Math.pow(v - m, 2), 0) / values.length);
+        }
+
+        function model12hSummary(data) {
+            const h = data?.hourly;
+            if (!h?.time?.length) return null;
+            const start = getNowIdx(h.time);
+            const end = Math.min(start + 12, h.time.length);
+            if (end <= start) return null;
+
+            const temps = (h.temperature_2m || []).slice(start, end).filter(Number.isFinite);
+            const rain = (h.precipitation || []).slice(start, end).filter(Number.isFinite);
+            const winds = (h.wind_speed_10m || []).slice(start, end).filter(Number.isFinite);
+            if (!temps.length && !rain.length && !winds.length) return null;
+
+            return {
+                temp: mean(temps),
+                rain: rain.reduce((s, v) => s + v, 0),
+                wind: mean(winds)
+            };
+        }
+
+        function calculateModelAgreement() {
+            const rows = Object.keys(MODELS)
+                .map(key => ({ key, summary: model12hSummary(appData[key]) }))
+                .filter(row => row.summary);
+
+            const temps = rows.map(r => r.summary.temp).filter(Number.isFinite);
+            const rains = rows.map(r => r.summary.rain).filter(Number.isFinite);
+            const winds = rows.map(r => r.summary.wind).filter(Number.isFinite);
+
+            // Questi punteggi misurano solo dispersione fra modelli, non probabilità di previsione corretta.
+            const tempSd = stdDev(temps);
+            const windSd = stdDev(winds);
+            const rainSd = stdDev(rains);
+            const rainMean = mean(rains) || 0;
+
+            const tempScore = 100 * (1 - clamp01(tempSd / 3.0));       // 3°C di sigma => accordo minimo
+            const windScore = 100 * (1 - clamp01(windSd / 15.0));     // 15 km/h di sigma => accordo minimo
+            const rainScale = Math.max(1.2, rainMean * 1.25);
+            const rainScore = 100 * (1 - clamp01(rainSd / rainScale));
+
+            const metricScores = [];
+            if (temps.length >= 2) metricScores.push([tempScore, .4]);
+            if (rains.length >= 2) metricScores.push([rainScore, .35]);
+            if (winds.length >= 2) metricScores.push([windScore, .25]);
+            const weight = metricScores.reduce((s, x) => s + x[1], 0);
+            const overall = weight ? metricScores.reduce((s, x) => s + x[0] * x[1], 0) / weight : null;
+
+            return {
+                modelCount: rows.length,
+                overall,
+                tempSd,
+                windSd,
+                rainMin: rains.length ? Math.min(...rains) : null,
+                rainMax: rains.length ? Math.max(...rains) : null,
+                tempCount: temps.length,
+                rainCount: rains.length,
+                windCount: winds.length
+            };
+        }
+
+        function agreementLabel(score) {
+            if (score == null) return 'Dati insufficienti';
+            if (score >= 85) return 'Molto alto';
+            if (score >= 70) return 'Alto';
+            if (score >= 50) return 'Medio';
+            return 'Basso';
+        }
+
+        function agreementColor(score) {
+            if (score == null) return 'var(--text-muted)';
+            if (score >= 85) return 'var(--accent-green)';
+            if (score >= 70) return 'var(--accent-blue)';
+            if (score >= 50) return 'var(--accent-yellow)';
+            return 'var(--accent-orange)';
+        }
+
+        function renderModelAgreement() {
+            const a = calculateModelAgreement();
+            const scoreEl = document.getElementById('agreement-score');
+            const meter = document.getElementById('agreement-meter-fill');
+            const tempEl = document.getElementById('agreement-temp');
+            const rainEl = document.getElementById('agreement-rain');
+            const windEl = document.getElementById('agreement-wind');
+            const noteEl = document.getElementById('agreement-note');
+            if (!scoreEl || !meter || !tempEl || !rainEl || !windEl || !noteEl) return;
+
+            const score = a.overall == null ? null : Math.round(a.overall);
+            scoreEl.textContent = score == null ? '--' : `${score}/100 · ${agreementLabel(score)}`;
+            scoreEl.style.color = agreementColor(score);
+            meter.style.width = `${score == null ? 0 : score}%`;
+
+            tempEl.textContent = a.tempCount >= 2 ? `dispersione ±${a.tempSd.toFixed(1)} °C` : 'dati insufficienti';
+            rainEl.textContent = a.rainCount >= 2 ? `${a.rainMin.toFixed(1)}–${a.rainMax.toFixed(1)} mm / 12h` : 'dati insufficienti';
+            windEl.textContent = a.windCount >= 2 ? `dispersione ±${a.windSd.toFixed(1)} km/h` : 'dati insufficienti';
+            noteEl.textContent = `${a.modelCount}/${Object.keys(MODELS).length} modelli confrontati · indice di convergenza, non percentuale di certezza.`;
+        }
+
         function renderHourly(p) {
             const h = p.hourly;
             const nowIdx = getNowIdx(h.time);
@@ -4302,7 +4328,7 @@
 
         function renderWind() {
             const isValid = m => m?.hourly?.wind_speed_10m && m.hourly.wind_speed_10m.some(v => v !== null);
-            const primary = [appData.italia2i, appData.icon_eu, appData.gfs, appData.ecmwf, appData.icon].find(isValid) || {};
+            const primary = [appData.italia2i, appData.icon_eu, appData.arpege, appData.gfs, appData.ecmwf, appData.icon].find(isValid) || {};
             const h = primary.hourly;
 
             if (!h) return;
@@ -4330,7 +4356,7 @@
 
             const ctxWind = document.getElementById('wind-chart').getContext('2d');
             // Vento per Sardegna: ItaliaMeteo ICON-2I + ICON-EU e confronto globale
-            const datasets = ['italia2i', 'icon_eu', 'gfs', 'ecmwf', 'icon'].filter(k => appData[k]?.hourly?.wind_speed_10m).map(k => {
+            const datasets = ['italia2i', 'icon_eu', 'arpege', 'gfs', 'ecmwf', 'icon'].filter(k => appData[k]?.hourly?.wind_speed_10m).map(k => {
                 let grad = ctxWind.createLinearGradient(0, 0, 0, 300);
                 grad.addColorStop(0, MODELS[k].color + '44');
                 grad.addColorStop(1, 'transparent');
@@ -4345,7 +4371,7 @@
                 };
             });
             // Gust tratteggiato dal modello principale per l'isola
-            const pk = appData.italia2i ? 'italia2i' : appData.icon_eu ? 'icon_eu' : appData.gfs ? 'gfs' : 'ecmwf';
+            const pk = appData.italia2i ? 'italia2i' : appData.icon_eu ? 'icon_eu' : appData.arpege ? 'arpege' : appData.gfs ? 'gfs' : appData.ecmwf ? 'ecmwf' : 'icon';
             if (appData[pk]?.hourly?.wind_gusts_10m) {
                 datasets.push({ label: 'Raffiche ' + MODELS[pk].name, data: appData[pk].hourly.wind_gusts_10m.slice(ni, ni + hours), borderColor: MODELS[pk].color, backgroundColor: 'transparent', borderWidth: 2, borderDash: [5, 5], fill: false });
             }
@@ -4434,15 +4460,46 @@
                 doubleClickZoom: true,
                 boxZoom: false,
                 keyboard: false,
-                tap: true
+                tap: true,
+                minZoom: 6,
+                maxZoom: 19
             });
 
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            // Satellite immediatamente utilizzabile: World Imagery pubblico.
+            // Google Satellite resta predisposto come integrazione futura ufficiale con API key dell'utente.
+            const satelliteLayer = L.tileLayer(
+                'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                {
+                    maxZoom: 19,
+                    minZoom: 6,
+                    attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics and contributors'
+                }
+            );
+
+            const darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
                 maxZoom: 19,
                 minZoom: 6,
                 subdomains: 'abcd',
                 attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+            });
+
+            marineWindBaseLayers = {
+                '🛰️ Satellite': satelliteLayer,
+                '🌑 Scura': darkLayer
+            };
+
+            const firstLayer = MAP_CONFIG.preferredBase === 'dark' ? darkLayer : satelliteLayer;
+            firstLayer.addTo(marineWindMap);
+
+            L.control.layers(marineWindBaseLayers, null, {
+                position: 'topright',
+                collapsed: true
             }).addTo(marineWindMap);
+
+            marineWindMap.on('baselayerchange', event => {
+                const provider = document.getElementById('marine-map-provider');
+                if (provider) provider.textContent = event?.name?.includes('Satellite') ? '🛰️ Satellite' : '🌑 Mappa scura';
+            });
 
             const overlayCanvas = document.getElementById('marine-wind-overlay');
             if (overlayCanvas && overlayCanvas.parentElement !== mapEl) {
@@ -4699,7 +4756,7 @@
             if (!canvas || !titleEl || !metaEl || !badgeEl) return;
 
             const isValid = m => m?.hourly?.wind_speed_10m && m.hourly.wind_speed_10m.some(v => v !== null);
-            const primary = [appData.italia2i, appData.icon_eu, appData.gfs, appData.ecmwf, appData.icon].find(isValid);
+            const primary = [appData.italia2i, appData.icon_eu, appData.arpege, appData.gfs, appData.ecmwf, appData.icon].find(isValid);
             if (!primary?.hourly) return;
 
             const h = primary.hourly;
@@ -4711,7 +4768,7 @@
             const marine = isMarineLocation(locationName, lat, lon);
 
             titleEl.textContent = `📍 ${locationName}`;
-            metaEl.textContent = `Vento attuale: ${Math.round(spd)} km/h · Raffica: ${Math.round(gust)} km/h`;
+            metaEl.textContent = `Vento locale: ${Math.round(spd)} km/h · Raffica: ${Math.round(gust)} km/h · frecce = direzione prevista`;
             badgeEl.textContent = marine ? '🌊 Area marina' : '💨 Vento';
 
             // Update Leaflet map
@@ -4913,9 +4970,9 @@
         function renderPrecip() {
             if (!HAS_CHART) return;
             // Sardegna: ItaliaMeteo ICON-2I nel breve, ECMWF/GFS per confronto
-            const precipModels = ['italia2i', 'icon_eu', 'ecmwf', 'gfs', 'icon'];
+            const precipModels = ['italia2i', 'icon_eu', 'arpege', 'ecmwf', 'gfs', 'icon'];
             const isValid = m => m?.hourly?.precipitation && m.hourly.precipitation.some(v => v !== null);
-            const primary = [appData.italia2i, appData.icon_eu, appData.gfs, appData.ecmwf, appData.icon].find(isValid) || {};
+            const primary = [appData.italia2i, appData.icon_eu, appData.arpege, appData.gfs, appData.ecmwf, appData.icon].find(isValid) || {};
             const h = primary.hourly;
             if (!h) return;
             const ni = getNowIdx(h.time);
@@ -4972,9 +5029,9 @@
         function renderTemp() {
             if (!HAS_CHART) return;
             // Modelli compatibili con la Sardegna
-            const tempModels = ['italia2i', 'icon_eu', 'ecmwf', 'gfs', 'icon'];
+            const tempModels = ['italia2i', 'icon_eu', 'arpege', 'ecmwf', 'gfs', 'icon'];
             const isValid = m => m?.hourly?.temperature_2m && m.hourly.temperature_2m.some(v => v !== null);
-            const primary = [appData.italia2i, appData.icon_eu, appData.ecmwf, appData.gfs, appData.icon].find(isValid) || {};
+            const primary = [appData.italia2i, appData.icon_eu, appData.arpege, appData.ecmwf, appData.gfs, appData.icon].find(isValid) || {};
             const h = primary.hourly;
             if (!h) return;
             const ni = getNowIdx(h.time);
@@ -5271,28 +5328,7 @@
         }
         function renderModels() {
             const grid = document.getElementById('models-grid');
-            const summaryEl = document.getElementById('models-summary');
             grid.innerHTML = '';
-
-            // Temperatura media di consenso tra i modelli attivi ora, per calcolare
-            // quanto ciascun modello si discosta dal "parere collettivo".
-            const availableEntries = Object.entries(MODELS).filter(([k]) => appData[k]?.hourly?.temperature_2m);
-            const nowTemps = availableEntries
-                .map(([k]) => {
-                    const h = appData[k].hourly;
-                    const ni = getNowIdx(h.time);
-                    return h.temperature_2m?.[ni];
-                })
-                .filter(v => v != null);
-            const consensusTemp = nowTemps.length ? nowTemps.reduce((a, b) => a + b, 0) / nowTemps.length : null;
-
-            if (summaryEl) {
-                const failed = appData._failedModels || [];
-                const c = computeConfidence();
-                summaryEl.innerHTML = `🎯 <strong>${availableEntries.length}/${Object.keys(MODELS).length}</strong> modelli attivi ·
-                    Temperatura media di consenso: <strong>${consensusTemp != null ? formatTemp(consensusTemp) : '--'}</strong> ·
-                    ${c.label}${failed.length ? ` · Non raggiungibili ora: ${failed.join(', ')}` : ''}`;
-            }
 
             Object.entries(MODELS).forEach(([k, m]) => {
                 const d = appData[k];
@@ -5300,15 +5336,6 @@
                 const h = d?.hourly || {};
                 const ni = available ? getNowIdx(h.time) : 0;
                 const unavailableText = 'Non disponibile ora. Gli altri modelli compatibili restano attivi.';
-
-                let deltaBadge = '';
-                if (available && consensusTemp != null && h.temperature_2m?.[ni] != null) {
-                    const delta = h.temperature_2m[ni] - consensusTemp;
-                    const absDelta = Math.abs(delta);
-                    const cls = absDelta < 0.6 ? 'aligned' : absDelta < 1.5 ? 'mid' : 'off';
-                    const sign = delta > 0 ? '+' : '';
-                    deltaBadge = `<span class="model-delta ${cls}">${sign}${delta.toFixed(1)}°C vs consenso</span>`;
-                }
 
                 grid.innerHTML += `
             <div class="model-card${available ? '' : ' unavailable'}" style="border-left:3px solid ${m.color}">
@@ -5324,7 +5351,7 @@
                     <div class="model-card-stats">
                         <div class="model-stat">
                             <span class="model-stat-label">Temperatura</span>
-                            <span class="model-stat-value">${formatTemp(h.temperature_2m?.[ni] ?? 0)} ${deltaBadge}</span>
+                            <span class="model-stat-value">${formatTemp(h.temperature_2m?.[ni] ?? 0)}</span>
                         </div>
                         <div class="model-stat">
                             <span class="model-stat-label">Vento</span>
@@ -5418,6 +5445,7 @@
         setupIOSViewportAndEvents();
         window.addEventListener('resize', applyRuntimeProfile, { passive: true });
         init();
+        startAutoRefresh();
         checkIOSInstallPrompt();
     </script>
 </body>
